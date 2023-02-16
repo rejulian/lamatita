@@ -51,11 +51,50 @@ app.get('/productos', (req,res)=>{
 app.get('/productos/:rubro', (req,res)=>{
     const rubro = req.params.rubro;
 
-    db.query('SELECT * FROM articulos WHERE rubro = ?',rubro, (err,result)=>{
+    db.query('SELECT * FROM articulos WHERE rubro = ? AND web = 1',rubro, (err,result)=>{
         if (err) {
             console.error(err)
         }else{
             res.send(result)
+        }
+    })
+})
+
+app.get('/productos/busqueda/:articulo', (req,res)=>{
+    const articulo = req.params.articulo;
+
+    db.query(`SELECT * FROM articulos WHERE articulo LIKE "%${articulo}%" AND web = 1`, (err,result)=>{
+        if (err) {
+            console.error(err)
+        }else{
+            res.send(result)
+        }
+    })
+})
+
+app.get('/producto/codigo/:codigo', (req,res)=>{
+    const codigo = req.params.codigo;
+
+    db.query('SELECT * FROM articulos WHERE codigo = ?',codigo, (err,result)=>{
+        if (err) {
+            console.error(err)
+        }else{
+            res.send(result)
+        }
+    })
+})
+
+app.post('/editar', (req,res)=>{
+    const codigo = req.body.codigo;
+    const newImg = req.body.newImg;
+    const newWeb = req.body.newWeb;
+
+    db.query(`UPDATE articulos SET foto = "${newImg}", web = ${newWeb} WHERE codigo = ${codigo}`, (err,result)=>{
+        if (err) {
+            console.error(err);
+        }else{
+            res.send('Articulo Actualizado!')
+            console.log('Articulo Actualizado!')
         }
     })
 })

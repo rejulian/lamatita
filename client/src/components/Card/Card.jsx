@@ -3,7 +3,7 @@ import React from 'react'
 const Card = ({prod}) => {
   return (
     <div className='card'>
-        <div>
+        <div className='card__img'>
             <img src={prod.foto} alt="Foto Articulo" />
         </div>
         <div className='card__text'>

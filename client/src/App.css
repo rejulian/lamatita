@@ -111,6 +111,10 @@ nav{
     width: 100%;
 }
 
+.card__img{
+    height: 100%;
+}
+
 .card__text{
     text-align: center;
     padding: 15px 0;
@@ -174,6 +178,92 @@ nav{
     margin: 30px 0;
 }
 
+.productoNotFound{
+    padding-top: 100px;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* LOADER */
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 46px;
+    height: 46px;
+    margin: 1px;
+    border-radius: 50%;
+    border: 5px solid rgb(0, 170, 255);
+    border-color: rgb(0, 170, 255) transparent rgb(0, 170, 255) transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+/* EDITAR */
+
+.editar{
+    padding-top: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+
+.editar__form{
+    border: 1px solid grey;
+    width: 400px;
+    padding: 10px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+}
+
+.editar__input{
+    margin-bottom: 20px !important;
+}
+
+.editar__form__text{
+    font-size: 20px;
+}
+
+.buscarProductoAEditar{
+    padding-top: 110px;
+    display: flex;
+    justify-content: center;
+    height: 90vh;
+    align-items: center;
+}
+
+.buscarProductoAEditar form{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid grey;
+    width: 400px;
+    height: 200px;
+    justify-content: center;
+    padding: 10px;
+}
 
 @media(max-width: 425px){
 

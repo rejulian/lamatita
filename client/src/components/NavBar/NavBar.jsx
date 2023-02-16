@@ -5,6 +5,12 @@ import { Link } from 'react-router-dom'
 const NavBar = () => {
 
     const [categories, setCategories] = useState([])
+    const [busqueda, setBusqueda] = useState('')
+
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+        window.location.href = `http://localhost:3000/productos/busqueda/${busqueda}`
+    }
 
     const getCategories = () => {
         Axios.get('http://localhost:4000/nav')
@@ -37,11 +43,17 @@ const NavBar = () => {
                         </ul>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/">Contacto</a>
+                        <a className="nav-link" href="https://api.whatsapp.com/send?phone=3364346500" target='_blank'>Contacto</a>
+                    </li>
+                    <li className="nav-item dropdown">
+                        <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Acciones</a>
+                        <ul className="dropdown-menu">
+                           <li><Link className="dropdown-item" to={`/buscarArticulo`}>Editar</Link></li>
+                        </ul>
                     </li>
                 </ul>
-                <form className="d-flex" role="search">
-                    <input className="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar"/>
+                <form className="d-flex" onSubmit={handleSubmit}>
+                    <input className="form-control me-2" value={busqueda} type="search" placeholder="Buscar" aria-label="Buscar" onChange={e => setBusqueda(e.target.value)}/>
                     <button className="btn btn-outline-success" type="submit">Buscar</button>
                 </form>
             </div>
